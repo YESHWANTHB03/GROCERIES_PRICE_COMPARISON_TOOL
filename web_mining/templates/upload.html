@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload CSV Files</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-image: url("static/pic.jpg");
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+input[type="text"], input[type="submit"] {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+label{
+  color: wheat;
+}
+
+  </style>
+</head>
+<body>
+  <h1>PRICE COMPARISON TOOL</h1>
+  <form action="/compare" method="POST" enctype="multipart/form-data">
+
+    <!-- Display all items from CSV as options in a dropdown -->
+    <label for="item_to_compare">SELECT AN ITEM  :</label>
+    <select id="item_to_compare" name="item_to_compare" required>
+      {% for item in items %}
+      <option value="{{ item }}">{{ item }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit" value="Compare Prices">
+  </form>
+</body>
+</html>
